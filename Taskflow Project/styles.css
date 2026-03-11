@@ -1,0 +1,108 @@
+/* ========================
+   VARIABLES Y RESET
+======================== */
+:root {
+    --color-primary: #1919BE;
+    --color-bg: #f4f4f4;
+    --color-white: #ffffff;
+    --color-text: #333333;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --border-radius: 5px;
+    --spacing: 20px;
+    --font-main: Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================
+   HEADER
+======================== */
+
+/* ========================
+   LAYOUT PRINCIPAL
+======================== */
+
+
+/* ========================
+   SECCIONES DE TAREAS
+======================== */
+
+
+ul {
+    list-style: none;
+}
+
+/* ========================
+   TARJETAS DE TAREA
+======================== */
+
+
+/* ========================
+   FORMULARIO
+======================== */
+
+label {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px; /* mínimo 16px para evitar zoom en móvil */
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    width: 100%;
+}
+
+input[type="text"]:focus {
+    outline: 2px solid var(--color-primary);
+    border-color: transparent;
+}
+
+
+
+
+
+
+/* ========================
+   ESTADÍSTICAS
+======================== */
+#stats h2 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+#stats p {
+    font-size: 0.95rem;
+}
+
+/* ========================
+   FOOTER
+======================== */
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+
+
+/* ========================
+   RESPONSIVE — PASO 5
+======================== */
+
+

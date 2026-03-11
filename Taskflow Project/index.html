@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend:{
+                    colors:{
+                        primary: '#1919BE',
+                        darkbg: '#374151',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="dark:bg-darkbg dark:text-white">
+
+    <header class="bg-blue-800 text-white p-5 text-center">
+        <h1 class="text-2xl font-bold text-center">TaskFlow</h1>
+        <button onclick="toggleModoOscuro()" title="Activar o Desactivar el Modo Oscuro"
+        class="absolute top-4 right-4 w-10 h-10 rounded-2xl bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-xl"
+        id="btn-modo-oscuro">🌙
+    </button>
+    </header>
+
+    <div class="flex flex-col md:flex-row gap-5 p-5 flex-1">
+        
+        <main class="flex flex-col gap-5 flex-1">
+            <section class="bg-white dark:bg-darkbg p-5 rounded shadow">
+                <h2 class="text-blue-800 dark:text-blue-300 font-bold mb-3">Tareas pendientes</h2>
+                <ul id="pending-tasks"></ul>
+            </section>
+            <section class="bg-white dark:bg-darkbg p-5 rounded shadow">
+                <h2 class="text-blue-800 dark:text-blue-300 font-bold mb-3">Tareas completadas</h2>
+                <ul id="completed-tasks"></ul>
+            </section>
+        </main>
+        
+
+        <aside class="w-full md:w-72 flex flex-col gap-5">
+
+            <h2 class="text-blue-800 dark:text-blue-300 font-bold">Nueva tarea</h2>
+            <form id="task-form" class="bg-white dark:bg-darkbg p-5 rounded shadow flex flex-col gap-3">
+                <label for="task-input" class="font-bold text-sm">Descripción</label>
+                <input type="text" id="task-input" placeholder="Escribe una tarea..." 
+                class="p-2 text-base border border-gray-300 rounded w-full focus:outline-none focus:border-blue-800 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                <button type="submit" class="p-2 bg-blue-800 text-white rounded cursor-pointer hover:bg-blue-900">Agregar tarea</button>
+            </form>
+            <div id="filtros" class="bg-white dark:bg-darkbg p-5 rounded shadow flex flex-col gap-3">
+                <h2 class="text-blue-800 dark:text-blue-300 font-bold">Filtrar</h2>
+                <button onclick="cambiarFiltro('todas',this)" tittle="Mostrar todas las tareas"
+                class="p-2 bg-blue-800 text-white rounded cursor-pointer hover:bg-blue-900">Todas</button>
+                <button onclick="cambiarFiltro('pendientes',this)" title="Mostrar solo tareas pendientes"
+                class="p-2 bg-blue-800 text-white rounded cursor-pointer hover:bg-blue-900">Pendientes</button>
+                <button onclick="cambiarFiltro('completadas',this)" title="Mostrar solo tareas completadas"
+                class="p-2 bg-blue-800 text-white rounded cursor-pointer hover:bg-blue-900">Completadas</button>
+            </div>
+            <div id="buscador" class="bg-white dark:bg-darkbg p-5 rounded shadow flex flex-col gap-3">
+                <h2 class="text-blue-800 dark:text-blue-300 font-bold">Buscar</h2>
+                <input type="text" id="input-busqueda" placeholder="Buscar tareas..." 
+                class="p-2 text-base border border-gray-300 rounded w-full focus:outline-none focus:border-blue-800 dark:bg-gray-700 dark:text-white dark:border-gray-600">
+            </div>
+            <div id="stats" class="bg-white dark:bg-darkbg p-5 rounded shadow flex flex-col gap-3">
+                <h2 class="text-blue-800 dark:text-blue-300 font-bold">Estadísticas</h2>
+                <p>Total: <span id="stat-total">0</span></p>
+                <p>Pendientes: <span id="stat-pending">0</span></p>
+                <p>Completadas: <span id="stat-completed">0</span></p>
+            </div>
+            <div id="acciones" class="bg-white dark:bg-darkbg    p-5 rounded shadow flex flex-col gap-3">
+                <h2 class="text-blue-800 dark:text-blue-300 font-bold">Acciones</h2>
+                <button onclick="completarTodas()" title="Marcar todas las tareas como completadas"
+                class="p-2 bg-blue-800 text-white rounded cursor-pointer hover:bg-blue-900">Completar todas</button>
+                <button onclick="borrarCompletadas()" title="Borrar todas las tareas completadas"
+                class="p-2 bg-blue-800 text-white rounded cursor-pointer hover:bg-blue-900">Borrar completadas</button>
+            </div>
+        </aside>
+        
+
+
+    </div>
+
+    <footer>
+        <p>TaskFlow &copy; 2025</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
