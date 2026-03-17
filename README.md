@@ -1,48 +1,121 @@
-# Pruebas de Testing
+# TaskFlow
 
-1.App con lista vacia
+**TaskFlow** es una aplicación web de gestión de tareas desarrollada con HTML, CSS y JavaScript vanilla. Permite crear, editar, filtrar y organizar tareas de forma sencilla, con soporte para modo oscuro y persistencia de datos mediante localStorage.
 
-Iniciando la app desde 0 aparece con las listas vacias, se pueden añadir completar y borrar sin problema, si la cierras y vuelves a abrir se mantienen  tus tareas guardadas.
+---
 
-2.Añadir tareas sin titulo
+## 📸 Vista previa
 
-Agregando una tarea sin titulo, o lo que es lo mismo pulsando el boton de agregar tarea sin escribir nada, no reacciona ni pasa nada
+> Abre `index.html` en tu navegador para ver la aplicación en funcionamiento.
 
-3.Añadir tarea con un titulo muy largo
+---
 
-Añadiendo un titulo muy lartgo lo unico que pasa es que el titulo se escribe en varios renglones, pero no rompe la interfaz 
+## ✨ Funcionalidades
 
-4.marcar varias tareas como completas
+- ✅ **Crear tareas** con título y nivel de prioridad (alta, media, baja)
+- ✏️ **Editar tareas** de forma inline sin recargar la página
+- 🗑️ **Eliminar tareas** con confirmación previa
+- ☑️ **Marcar tareas** como completadas o pendientes
+- 🔍 **Buscar tareas** por texto en tiempo real
+- 🔽 **Filtrar tareas** por estado: todas, pendientes o completadas
+- 📊 **Estadísticas** en tiempo real: total, pendientes y completadas
+- 🌙 **Modo oscuro** con persistencia entre sesiones
+- 💾 **Persistencia de datos** mediante localStorage
+- 🔢 **Contador de caracteres** en el input de nueva tarea
+- 💬 **Mensaje de lista vacía** cuando no hay tareas en una sección
+- ✔️ **Completar o borrar todas** las tareas de una vez
 
-Completando varias tareas o pulsando el boton de completar todas, no se rompe nada y reacciona bien
+---
 
-5.Eliminar varias tareas
+## 🗂️ Estructura del proyecto
 
-Eliminando varias tareas de forma individual o con el boton de eliminar todas, no se rompe nada y todo funciona bien
+```
+TaskFlow/
+├── index.html       # Estructura HTML de la aplicación
+├── app.js           # Lógica JavaScript de la aplicación
+├── styles.css       # Estilos CSS personalizados
+└── docs/
+    └── ai/
+        ├── ai-comparison.md       # Comparativa ChatGPT vs Claude
+        ├── cursor-workflow.md     # Flujo de trabajo con Cursor + MCP
+        ├── prompt-engineering.md  # Prompts útiles documentados
+        ├── experiments.md         # Experimentos con y sin IA
+        └── reflection.md          # Reflexión final
+```
 
-6.Persistencia de Datos
+---
 
-Añadadiendo, completando y eliminando los cambios persisten aunque recargue la pagina
+## 🚀 Cómo usar la aplicación
 
-7.Filtros
+### 1. Clonar o descargar el repositorio
 
-Utilizando mis filtros de Todas, Pendientes y Completadas, la pagina reacciona como deberia, no hay ningun error
+```bash
+git clone https://github.com/tu-usuario/taskflow.git
+cd taskflow
+```
 
-8.Busqueda
+### 2. Abrir en el navegador
 
-Poniendo en el buscador cualquier palabra de una tarea, la pagina muestra solo la tarea que incluye dicha palabra
+No necesita instalación ni servidor. Simplemente abre el archivo `index.html` en tu navegador:
 
-9.Editar Tarea
+```
+Doble clic en index.html
+```
 
-Editanto las tareas todo va bien, no hay resultado extraños, permite editarlos sin problema, he hecho la prueba editando el titulos con mas de 100 caracteres de la prueba 3
+O si tienes la extensión **Live Server** en VS Code o Cursor:
 
-10.COmpletar todas y Borrar completadas
+```
+Clic derecho en index.html → Open with Live Server
+```
 
-Estos dos botones funcionan bien, no hay resultado extraños, al borrarlos no hay forma de recuperar lo borrado, mientras que lo marcado como completo si que se puede volver a desmarcar
+---
 
-11.Modo Oscuro
+## 📖 Ejemplos de uso
 
-El modo oscuro funciona, que ya es mas de lo que podia decir al principio, la pagina cambia sin problemas de tema, y al recargar la pagina se mantiene en el tema en que estaba antes de recargar
+### Crear una tarea con prioridad alta
+1. Escribe el título en el campo **Descripción**
+2. Selecciona **🔴 Alta** en el desplegable de prioridad
+3. Pulsa **Agregar tarea**
 
-12.Responsive
+### Buscar tareas
+Escribe en el campo **Buscar** y la lista se filtra automáticamente en tiempo real.
 
+### Activar el modo oscuro
+Pulsa el botón 🌙 en la esquina superior derecha. La preferencia se guarda automáticamente.
+
+### Editar una tarea
+Pulsa el botón **Editar** en cualquier tarea, modifica el texto y pulsa **Guardar**.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología | Uso |
+|------------|-----|
+| HTML5 | Estructura de la aplicación |
+| CSS3 | Estilos personalizados y variables CSS |
+| JavaScript ES6 | Lógica de la aplicación |
+| Tailwind CSS (CDN) | Clases de utilidad para el diseño |
+| localStorage | Persistencia de datos en el navegador |
+
+---
+
+## 🤖 Desarrollo asistido por IA
+
+Este proyecto fue desarrollado con ayuda de herramientas de IA:
+
+- **Claude** y **ChatGPT** para explicar conceptos, detectar bugs y generar código
+- **Cursor** como IDE asistido por IA con autocompletado y chat contextual
+- **MCP (Model Context Protocol)** para conectar la IA directamente con los archivos del proyecto
+
+Toda la documentación del proceso está disponible en la carpeta [`docs/ai/`](./docs/ai/).
+
+---
+
+## 📝 Licencia
+
+Proyecto de uso educativo desarrollado para el módulo DAM.
+
+---
+
+*TaskFlow © 2025*

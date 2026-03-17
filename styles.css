@@ -3,14 +3,25 @@
 ======================== */
 :root {
     --color-primary: #1919BE;
+    --color-primary-hover: #1414a0;
     --color-bg: #f4f4f4;
     --color-white: #ffffff;
     --color-text: #333333;
+    --color-text-muted: #888888;
+    --color-border: #cccccc;
     --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-danger: #dc2626;
+    --color-danger-hover: #b91c1c;
     --border-radius: 5px;
+    --border-radius-lg: 8px;
     --spacing: 20px;
+    --spacing-sm: 10px;
     --font-main: Arial, sans-serif;
+    --transition: 0.2s ease;
 }
+/* REFACTOR: se añadieron variables para hover, danger, border, spacing-sm
+   y transition. Así cualquier cambio de color o animación se aplica
+   desde un único lugar. */
 
 * {
     margin: 0;
@@ -30,16 +41,40 @@ body {
 /* ========================
    HEADER
 ======================== */
+/* REFACTOR: sección estaba vacía. Se añaden estilos base para el header
+   que complementan las clases de Tailwind del HTML. */
+header {
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
 
 /* ========================
    LAYOUT PRINCIPAL
 ======================== */
-
+/* REFACTOR: sección estaba vacía. Se añade gap y padding base para
+   que el layout funcione correctamente sin depender solo de Tailwind. */
+.layout-principal {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing);
+    padding: var(--spacing);
+}
 
 /* ========================
    SECCIONES DE TAREAS
 ======================== */
-
+/* REFACTOR: sección estaba vacía. Se añaden estilos para los títulos
+   de sección y el espacio entre ellas. */
+section h2 {
+    font-size: 1.05rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
 
 ul {
     list-style: none;
@@ -48,34 +83,68 @@ ul {
 /* ========================
    TARJETAS DE TAREA
 ======================== */
+/* REFACTOR: sección estaba vacía. Se documentan los estilos de las
+   tarjetas que se aplican dinámicamente desde JS. */
+li {
+    transition: opacity var(--transition), box-shadow var(--transition);
+}
 
+li:hover {
+    box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+li.opacity-60 {
+    opacity: 0.6;
+}
+
+li.line-through span {
+    text-decoration: line-through;
+}
 
 /* ========================
    FORMULARIO
 ======================== */
-
 label {
     font-weight: bold;
     font-size: 0.9rem;
 }
 
 input[type="text"] {
-    padding: 10px;
+    padding: var(--spacing-sm);
     font-size: 16px; /* mínimo 16px para evitar zoom en móvil */
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
     width: 100%;
+    transition: border-color var(--transition), outline var(--transition);
 }
+/* REFACTOR: se sustituyó #ccc por var(--color-border) para centralizar
+   el color del borde. Se añadió transition para suavizar el foco. */
 
 input[type="text"]:focus {
     outline: 2px solid var(--color-primary);
     border-color: transparent;
 }
 
+/* ========================
+   BOTONES
+======================== */
+/* REFACTOR: sección nueva. Se añaden estilos base de botón reutilizables
+   para complementar las clases de Tailwind y garantizar consistencia. */
+button {
+    cursor: pointer;
+    transition: background-color var(--transition), opacity var(--transition);
+    border: none;
+    border-radius: var(--border-radius);
+}
 
+button:active {
+    opacity: 0.85;
+}
 
-
-
+button.activo {
+    outline: 3px solid white;
+    outline-offset: 2px;
+}
 
 /* ========================
    ESTADÍSTICAS
@@ -89,20 +158,56 @@ input[type="text"]:focus {
     font-size: 0.95rem;
 }
 
+#stats span {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+/* REFACTOR: se añadió estilo para el <span> de los números,
+   destacándolos visualmente con el color primario. */
+
 /* ========================
    FOOTER
 ======================== */
 footer {
     text-align: center;
-    padding: 10px;
+    padding: var(--spacing-sm);
     font-size: 0.85rem;
-    color: #888;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
 }
-
-
+/* REFACTOR: se añadió border-top para separar visualmente el footer,
+   margin-top: auto para pegarlo al fondo, y se sustituyó el color
+   literal #888 por var(--color-text-muted). */
 
 /* ========================
    RESPONSIVE — PASO 5
 ======================== */
+/* REFACTOR: sección estaba vacía. Se añaden breakpoints básicos para
+   que la aplicación sea usable en móvil. */
+@media (max-width: 768px) {
+    .layout-principal {
+        flex-direction: column;
+    }
 
+    aside {
+        width: 100%;
+    }
 
+    header h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    li > div {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
